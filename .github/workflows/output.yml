@@ -1,0 +1,20 @@
+name: Job Outputs
+
+on: push
+
+jobs:
+  create-date:
+    runs-on: ubuntu-latest
+    outputs:
+      today: ${{ steps.date.outputs.today }}
+
+    steps:
+      - id: date
+        run: echo "today=$(date)" >> $GITHUB_OUTPUT
+
+  show-date:
+    needs: create-date
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "${{ needs.create-date.outputs.today }}"
