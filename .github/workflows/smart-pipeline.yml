@@ -1,0 +1,21 @@
+name: Smart Pipeline
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Linting"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Testing"
+
+  summary:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "All checks completed"
+      - run: echo "Branch = ${{ github.ref_name }}"
