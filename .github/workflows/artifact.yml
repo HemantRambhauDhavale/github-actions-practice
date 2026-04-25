@@ -1,0 +1,17 @@
+name: Artifact Demo
+
+on: push
+
+jobs:
+  upload-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create File
+        run: echo "This is my report" > report.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-report
+          path: report.txt
