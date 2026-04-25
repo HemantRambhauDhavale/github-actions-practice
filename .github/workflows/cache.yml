@@ -1,0 +1,14 @@
+name: Cache Demo
+
+on: push
+
+jobs:
+  cache-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache
+          key: my-cache-key
+
+      - run: echo "Cache used"
