@@ -1,8 +1,7 @@
-const express = require('express');
-const app = express();
+const http = require('http');
 
-app.get('/', (req, res) => {
-  res.send('Hello Hemant CI/CD Docker App Running!');
+const server = http.createServer((req, res) => {
+  res.end("CI/CD Pipeline Working");
 });
 
-app.listen(3000, () => console.log('Running on port 3000'));
+server.listen(3000);
