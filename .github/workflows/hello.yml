@@ -7,20 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Fail step
-        uses: wrongcommand
+  - uses: actions/checkout@v4
 
-      - name: Print Hello
-        run: echo "Hello from GitHub Actions!"
+  - name: Print Hello
+    run: echo "Hello"
 
-      - name: Show Date
-        run: date
-
-      - name: Show Branch Name
-        run: echo ${{ github.ref_name }}
-
-      - name: List Files
-        run: ls -la
-
-      - name: Show OS
-        run: uname -a
+  - name: Safe Step
+    run: echo "Fixed"
