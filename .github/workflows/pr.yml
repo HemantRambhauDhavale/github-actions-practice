@@ -1,15 +1,9 @@
-name: PR Pipeline
+dependency-check:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
 
-on:
-  pull_request:
-    branches: [main]
-
-jobs:
-  test:
-    uses: ./.github/workflows/reusable-build.yml
-
-  pr-msg:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "PR checks passed"
+    - name: Dependency Review
+      uses: actions/dependency-review-action@v4
+      with:
+        fail-on-severity: critical
